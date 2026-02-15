@@ -22,14 +22,7 @@
     "noUnusedParameters": true,
     "erasableSyntaxOnly": true,
     "noFallthroughCasesInSwitch": true,
-    "noUncheckedSideEffectImports": true,
-
-    "baseUrl": ".",
-    "paths": {
-      "@/*": [
-        "./lib/*"
-      ]
-    }
+    "noUncheckedSideEffectImports": true
   },
-  "include": ["lib"]
+  "include": ["src"]
 }

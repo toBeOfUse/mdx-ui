@@ -1,0 +1,40 @@
+import { MdxAccordion } from '../../../'
+
+<MdxAccordion>
+
+**What is this library?**
+
+---
+
+This library provides MDX transformer components that convert standard
+Markdown elements into interactive UI components like accordions,
+popovers, and carousels. Everything above the `---` becomes the
+accordion label, and everything below becomes the hidden content.
+
+- Built with **shadcn/ui** and **Radix UI**
+- Fully accessible
+- Easy to use in any MDX file
+
+</MdxAccordion>
+
+<MdxAccordion>
+
+**How does the MdxAccordion work?**
+
+---
+
+The `MdxAccordion` scans its children for an `<hr>` element
+(produced by `---` in Markdown). Content before the `<hr>` becomes the
+trigger label, and content after becomes the collapsible body.
+
+```
+<MdxAccordion>
+Label content here
+
+---
+
+Hidden content here
+</MdxAccordion>
+```
+
+</MdxAccordion>
