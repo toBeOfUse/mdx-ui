@@ -27,11 +27,11 @@ export function MdxAccordion({ children }: { children: ReactNode }) {
     <Accordion
       type="single"
       collapsible
-      className="w-full border border-gray-200 px-4 rounded-lg my-4"
+      className="w-full border border-border px-4 rounded-lg my-4"
     >
       <AccordionItem value="item-1">
         <AccordionTrigger className="text-sm">{header}</AccordionTrigger>
-        <AccordionContent className="prose">{normalChildren}</AccordionContent>
+        <AccordionContent className="prose dark:prose-invert">{normalChildren}</AccordionContent>
       </AccordionItem>
     </Accordion>
   );

@@ -21,7 +21,7 @@ export function MdxPopover({ children }: { children: ReactNode }) {
             {header}
           </Button>
         </PopoverTrigger>
-        <PopoverContent className="w-80 prose">{normalChildren}</PopoverContent>
+        <PopoverContent className="w-80 prose dark:prose-invert">{normalChildren}</PopoverContent>
       </Popover>
     </div>
   );

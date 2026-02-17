@@ -3,6 +3,7 @@ import { evaluate } from '@mdx-js/mdx'
 import * as runtime from 'react/jsx-runtime'
 import Editor from '@monaco-editor/react'
 import { MdxAccordion, MdxCarousel, MdxPopover } from '../../'
+import { useTheme } from './useTheme'
 
 const defaultValue = `<MdxAccordion>
 
@@ -76,6 +77,7 @@ class ErrorBoundary extends Component<
 }
 
 export function Playground() {
+  const { isDark } = useTheme()
   const [value, setValue] = useState(defaultValue)
   const [result, setResult] = useState<ReactNode>(null)
   const [error, setError] = useState<string | null>(null)
@@ -102,7 +104,7 @@ export function Playground() {
       <div
         style={{
           flex: 1,
-          border: '1px solid #e5e7eb',
+          border: '1px solid var(--border)',
           borderRadius: '0.5rem',
           overflow: 'hidden',
         }}
@@ -110,6 +112,7 @@ export function Playground() {
         <Editor
           defaultValue={defaultValue}
           defaultLanguage="markdown"
+          theme={isDark ? 'vs-dark' : 'vs'}
           onChange={(v) => setValue(v ?? '')}
           options={{
             minimap: { enabled: false },
@@ -130,7 +133,7 @@ export function Playground() {
         style={{
           flex: 1,
           padding: '1rem',
-          border: '1px solid #e5e7eb',
+          border: '1px solid var(--border)',
           borderRadius: '0.5rem',
           overflow: 'auto',
           textAlign: 'left',
