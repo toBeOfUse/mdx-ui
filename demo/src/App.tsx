@@ -1,5 +1,7 @@
+import { useState } from 'react'
 import { ThemeToggle } from './ThemeToggle'
 import { MdxExample } from './MdxExample'
+import { Playground } from './Playground'
 import './App.css'
 
 const accordionMdx = `**Click to expand**
@@ -18,10 +20,67 @@ perhaps, weasels.
 #### Tab B
 Ferrets are different from weasels.`
 
+const snippets: Record<string, string> = {
+  Accordion: `<MdxAccordion>
+
+**Click to expand**
+
+---
+
+Here is some hidden content revealed by the accordion.
+
+</MdxAccordion>`,
+  Alert: `<MdxAlert variant="info">
+
+###### Heads up!
+
+This is an informational alert rendered from Markdown.
+
+</MdxAlert>`,
+  Tabs: `<MdxTabs>
+
+#### Tab A
+Content for the first tab.
+
+#### Tab B
+Content for the second tab.
+
+</MdxTabs>`,
+  Carousel: `<MdxCarousel>
+
+### Slide One
+Welcome to the carousel.
+
+### Slide Two
+Navigate with the arrow buttons.
+
+</MdxCarousel>`,
+  Popover: `<MdxPopover>
+
+##### Click me
+
+This content appears inside a popover.
+
+</MdxPopover>`,
+}
+
 function App() {
+  const [mdx, setMdx] = useState(`<MdxAlert variant="info">
+
+###### Hi!
+
+Add some content in the editor to see what it looks like when rendered.
+
+</MdxAlert>`)
+
+  const appendSnippet = (name: string) => {
+    setMdx((prev) => (prev ? prev + '\n\n' : '') + snippets[name])
+  }
+
   return (
     <div className="app">
       <ThemeToggle />
+      <div className="above-the-fold">
       <div className="app-header">
         <h1>MDX Components</h1>
         <p>Drop-in components that turn simple Markdown into interactive UI.</p>
@@ -36,6 +95,20 @@ function App() {
         <div>
           <MdxExample component="MdxTabs" mdx={tabsMdx} />
         </div>
+      </div>
+      </div>
+
+      <div className="sandbox-section">
+        <h2>Sandbox</h2>
+        <p>Try it out - click a component to add it, then edit freely.</p>
+        <div className="snippet-buttons">
+          {Object.keys(snippets).map((name) => (
+            <button key={name} className="snippet-btn" onClick={() => appendSnippet(name)}>
+              + {name}
+            </button>
+          ))}
+        </div>
+        <Playground value={mdx} onChange={setMdx} />
       </div>
     </div>
   )

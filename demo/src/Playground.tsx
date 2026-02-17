@@ -2,8 +2,8 @@ import { useEffect, useState, useCallback, Component, type ReactNode } from 'rea
 import { evaluate } from '@mdx-js/mdx'
 import * as runtime from 'react/jsx-runtime'
 import Editor from '@monaco-editor/react'
-import { MdxAccordion, MdxCarousel, MdxPopover } from '../../'
-import { useTheme } from './useTheme'
+import { MdxAccordion, MdxAlert, MdxCarousel, MdxPopover, MdxTabs } from '../../'
+import { useTheme } from './theme'
 
 const defaultValue = `<MdxAccordion>
 
@@ -45,7 +45,9 @@ Use the arrow buttons to navigate between slides.
 
 </MdxCarousel>`
 
-const components = { MdxAccordion, MdxCarousel, MdxPopover }
+const components = { MdxAccordion, MdxAlert, MdxCarousel, MdxPopover, MdxTabs }
+
+const importLine = `import { MdxAccordion, MdxAlert, MdxCarousel, MdxPopover, MdxTabs } from 'components-for-mdx';`
 
 
 class ErrorBoundary extends Component<
@@ -76,15 +78,19 @@ class ErrorBoundary extends Component<
   }
 }
 
-export function Playground() {
+export function Playground({ value: controlledValue, onChange }: { value?: string; onChange?: (v: string) => void } = {}) {
   const { isDark } = useTheme()
-  const [value, setValue] = useState(defaultValue)
+  const isControlled = controlledValue !== undefined
+  const [internalValue, setInternalValue] = useState(defaultValue)
+  const value = isControlled ? controlledValue : internalValue
+  const setValue = (v: string) => { if (isControlled) { onChange?.(v) } else { setInternalValue(v) } }
   const [result, setResult] = useState<ReactNode>(null)
   const [error, setError] = useState<string | null>(null)
 
   const compileAndRun = useCallback(async (source: string) => {
+    const stripped = source.replace(/^import\s+.*?['"](components-for-mdx)['"]\s*\n?/gm, '')
     try {
-      const { default: Content } = await evaluate(source, {
+      const { default: Content } = await evaluate(stripped, {
         ...runtime,
         baseUrl: window.location.href,
         useMDXComponents: () => components,
@@ -97,20 +103,26 @@ export function Playground() {
     }
   }, [])
 
-  useEffect(() => {compileAndRun(value)}, [value]);
+  useEffect(() => { compileAndRun(value) }, [value])
 
   return (
-    <div style={{ display: 'flex', gap: '1rem', minHeight: 400 }}>
+    <div style={{ display: 'flex', gap: '1rem', height:'100%', minHeight:400 }}>
       <div
         style={{
           flex: 1,
           border: '1px solid var(--border)',
           borderRadius: '0.5rem',
           overflow: 'hidden',
+          display: 'flex',
+          flexDirection: 'column',
         }}
       >
+        <div style={{ fontSize: '0.8125rem', padding: '0.5rem 0.75rem', borderBottom: '1px solid var(--border)', fontFamily: 'ui-monospace, SFMono-Regular, "SF Mono", Menlo, Consolas, monospace', color: 'var(--muted-foreground)', userSelect: 'none', background: isDark ? '#1e1e1e' : '#ffffff', flexShrink: 0 }}>
+          {importLine}
+        </div>
         <Editor
-          defaultValue={defaultValue}
+          height="100%"
+          value={value}
           defaultLanguage="markdown"
           theme={isDark ? 'vs-dark' : 'vs'}
           onChange={(v) => setValue(v ?? '')}

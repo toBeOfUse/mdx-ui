@@ -49,3 +49,10 @@ export function toggleTheme() {
   applyTheme(shouldBeDarkNow)
   notify()
 }
+
+import { useSyncExternalStore } from 'react'
+
+export function useTheme() {
+  const dark = useSyncExternalStore(subscribeToTheme, isDark)
+  return { isDark: dark, toggle: toggleTheme }
+}

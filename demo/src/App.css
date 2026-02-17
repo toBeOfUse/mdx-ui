@@ -1,10 +1,10 @@
 .app {
   max-width: 1300px;
   margin: 0 auto;
-  padding: 1.5rem;
+  padding: 0 1.5rem;
   display: flex;
   flex-direction: column;
-  height: 100vh;
+  min-height: 100vh;
 }
 
 .app-header {
@@ -73,7 +73,21 @@
   }
 }
 
+
+.above-the-fold {
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  padding: 1rem 0;
+}
+
 @media (max-width: 768px) {
+
+  .above-the-fold {
+    height: auto;
+  }
+
   .examples-grid {
     grid-template-columns: 1fr !important;
     gap: 0.5rem;
@@ -92,5 +106,47 @@
   .mdx-example svg {
     transform: rotate(90deg);
     justify-self: center;
+    margin-bottom: -12px;
   }
+}
+
+.sandbox-section {
+  display: flex;
+  flex-direction: column;
+  padding: 3rem 0;
+  height: 100vh;
+}
+
+.sandbox-section h2 {
+  font-size: 1.5rem;
+  font-weight: bold;
+  margin-bottom: 0.25rem;
+}
+
+.sandbox-section>p {
+  color: var(--muted-foreground);
+  margin-bottom: 1rem;
+}
+
+.snippet-buttons {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin-bottom: 1rem;
+}
+
+.snippet-btn {
+  padding: 0.375rem 0.875rem;
+  border: 1px solid var(--border);
+  border-radius: 9999px;
+  background: var(--background);
+  color: var(--foreground);
+  font-size: 0.875rem;
+  cursor: pointer;
+  transition: background 0.15s, border-color 0.15s;
+}
+
+.snippet-btn:hover {
+  background: var(--muted);
+  border-color: var(--foreground);
 }
