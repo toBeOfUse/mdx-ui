@@ -56,7 +56,7 @@ Card Heading
 This is the card content.
 
 </MdxCard>`,
-  CardSet: `<MdxCardSet>
+  'Card Set': `<MdxCardSet>
 
 # Card One
 

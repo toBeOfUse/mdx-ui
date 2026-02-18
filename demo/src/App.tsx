@@ -1,3 +1,4 @@
+import { useEffect, useRef, useState } from 'react';
 import { ThemeToggle } from './ThemeToggle';
 import { MdxExample } from './MdxExample';
 import { Playground } from './Playground';
@@ -21,15 +22,36 @@ This tab has content.
 
 This tab has different content.`;
 
-const initialMdx = `<MdxInfo>
+const sandboxInitialValue = `<MdxTabs>
 
-Hi!
+${tabsMdx}
 
-Add some content in the editor to see what it looks like when rendered.
+</MdxTabs>
 
-</MdxInfo>`;
+`;
 
 function App() {
+  const stepsRef = useRef<HTMLElement | null>(null);
+  const [stepsInView, setStepsInView] = useState(false);
+
+  useEffect(() => {
+    const el = stepsRef.current;
+    if (!el) return;
+
+    const obs = new IntersectionObserver(
+      (entries) => {
+        if (entries.some((e) => e.isIntersecting)) {
+          setStepsInView(true);
+          obs.disconnect();
+        }
+      },
+      { threshold: 0.5 },
+    );
+
+    obs.observe(el);
+    return () => obs.disconnect();
+  }, []);
+
   return (
     <div className={styles.app}>
       <ThemeToggle />
@@ -53,9 +75,58 @@ function App() {
 
       <div className={styles.sandboxSection}>
         <h2>Sandbox</h2>
-        <p>Try it out - click a component to add it, then edit freely.</p>
-        <Playground initialValue={initialMdx} />
+        <p>
+          Try it out - click the buttons to add example components, and edit them however you want.
+        </p>
+        <Playground initialValue={sandboxInitialValue} />
       </div>
+
+      <section
+        ref={stepsRef}
+        className={`${styles.stepsSection} ${stepsInView ? styles.inView : ''}`}
+      >
+        <h2 className={styles.stepsHeading}>And now, the details</h2>
+        <ol className={styles.stepsList}>
+          <li className={styles.stepItem}>
+            <div className={styles.stepNumber}>1.</div>
+            <div className={styles.stepContent}>
+              <h3>Why?</h3>
+              <p>
+                The fact that MDX lets you drop React components into something you’re writing is
+                really cool, but writing or generating the JSX can be a chore. This library cuts out
+                the boilerplate.
+              </p>
+            </div>
+          </li>
+          <li className={styles.stepItem}>
+            <div className={styles.stepNumber}>2.</div>
+            <div className={styles.stepContent}>
+              <h3>How?</h3>
+              <p>
+                These components are pure React, with no special build step or config required. They
+                are based on shadcn and ship with a stylesheet produced by Tailwind. For more
+                technical details, see the Readme.
+              </p>
+            </div>
+          </li>
+          <li className={styles.stepItem}>
+            <div className={styles.stepNumber}>3.</div>
+            <div className={styles.stepContent}>
+              <h3>Let's Go</h3>
+              <p>In your terminal:</p>
+              <pre className={styles.stepCode}>npm i components-for-mdx</pre>
+              <p>In an MDX file:</p>
+              <pre className={styles.stepCode}>
+                {`import { MdxWhatever } from 'components-for-mdx'`}
+              </pre>
+              <p>Elsewhere in the MDX file:</p>
+              <pre className={styles.stepCode}>
+                {`<MdxWhatever>\n  Your Content Here\n</MdxWhatever>`}
+              </pre>
+            </div>
+          </li>
+        </ol>
+      </section>
     </div>
   );
 }
