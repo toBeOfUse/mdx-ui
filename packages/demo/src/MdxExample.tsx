@@ -10,7 +10,7 @@ import {
   MdxCardSet,
   MdxPopover,
   MdxTabs,
-} from 'components-for-mdx';
+} from 'mdx-ui';
 
 const components = { MdxAccordion, MdxInfo, MdxWarning, MdxCard, MdxCardSet, MdxPopover, MdxTabs };
 

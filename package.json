@@ -1,12 +1,12 @@
 {
-  "name": "mdx-components-monorepo",
+  "name": "mdx-ui-monorepo",
   "private": true,
   "type": "module",
   "workspaces": [
     "packages/*"
   ],
   "scripts": {
-    "build": "npm run build --workspace=packages/components-for-mdx",
+    "build": "npm run build --workspace=packages/mdx-ui",
     "dev:lib": "npm run build -- --watch",
     "dev:demo": "npm run dev --workspace=packages/demo",
     "dev": "concurrently npm:dev:*",

@@ -13,7 +13,7 @@ import {
   MdxCardSet,
   MdxPopover,
   MdxTabs,
-} from 'components-for-mdx';
+} from 'mdx-ui';
 import { useTheme } from './theme';
 
 const snippets: Record<string, string> = {
@@ -82,7 +82,7 @@ This content appears inside a popover.
 
 const components = { MdxAccordion, MdxInfo, MdxWarning, MdxCard, MdxCardSet, MdxPopover, MdxTabs };
 
-const importLine = `import { MdxAccordion, MdxInfo, MdxWarning, MdxCard, MdxCardSet, MdxPopover, MdxTabs } from 'components-for-mdx';`;
+const importLine = `import { MdxAccordion, MdxInfo, MdxWarning, MdxCard, MdxCardSet, MdxPopover, MdxTabs } from 'mdx-ui';`;
 
 class ErrorBoundary extends Component<
   { resetKey: string; children: ReactNode },

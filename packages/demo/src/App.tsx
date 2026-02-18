@@ -57,7 +57,7 @@ function App() {
       <ThemeToggle />
       <div className={styles.aboveTheFold}>
         <div className={styles.appHeader}>
-          <h1>MDX Components</h1>
+          <h1>MDX UI</h1>
           <p>Drop-in components that turn simple Markdown into interactive UI.</p>
         </div>
         <div className={styles.examplesGrid}>
@@ -105,8 +105,7 @@ function App() {
               <p>
                 These components are pure React, with no special build step or config required. They
                 are based on shadcn and ship with a stylesheet produced by Tailwind. For more
-                technical details, see the{' '}
-                <a href="https://github.com/toBeOfUse/mdx-components">Readme</a>.
+                technical details, see the <a href="https://github.com/toBeOfUse/mdx-ui">Readme</a>.
               </p>
             </div>
           </li>
@@ -115,11 +114,9 @@ function App() {
             <div className={styles.stepContent}>
               <h3>Let's Go</h3>
               <p>In your terminal:</p>
-              <pre className={styles.stepCode}>npm i components-for-mdx</pre>
+              <pre className={styles.stepCode}>npm i mdx-ui</pre>
               <p>In an MDX file:</p>
-              <pre className={styles.stepCode}>
-                {`import { MdxWhatever } from 'components-for-mdx'`}
-              </pre>
+              <pre className={styles.stepCode}>{`import { MdxWhatever } from 'mdx-ui'`}</pre>
               <p>Elsewhere in the MDX file:</p>
               <pre className={styles.stepCode}>
                 {`<MdxWhatever>\n  Your Content Here\n</MdxWhatever>`}

@@ -1,4 +1,4 @@
-# MDX Components Demo
+# MDX UI Demo
 
 This is a simple demo site for the MDX components library.
 

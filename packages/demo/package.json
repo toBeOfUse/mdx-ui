@@ -1,5 +1,5 @@
 {
-  "name": "components-for-mdx-demo",
+  "name": "mdx-ui-demo",
   "private": true,
   "version": "0.0.0",
   "type": "module",
@@ -15,7 +15,7 @@
     "@mdx-js/rollup": "^3.1.1",
     "@monaco-editor/react": "^4.7.0",
     "@types/mdx": "^2.0.13",
-    "components-for-mdx": "*",
+    "mdx-ui": "*",
     "react": "^19.2.0",
     "react-dom": "^19.2.0"
   },

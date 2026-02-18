@@ -1,4 +1,4 @@
-# MDX Components
+# MDX UI
 
 This is a component library intended to be used in [MDX](https://mdxjs.com/) files. It takes the elements that MDX produces and slots them into place in Shadcn components. It makes it very easy to have basic UI in MDX files. Given input like this:
 
@@ -34,4 +34,4 @@ These components will switch into dark mode if they have a container element as 
 
 ## Development
 
-The main repository is a simple monorepo managed with npm workspaces. It has two packages: the main library package (`packages/components-for-mdx`), and the static demo site (`packages/demo`). Run `npm run dev` to build the library in watch mode and run a dev server for the demo site.
+The main repository is a simple monorepo managed with npm workspaces. It has two packages: the main library package (`packages/mdx-ui`), and the static demo site (`packages/demo`). Run `npm run dev` to build the library in watch mode and run a dev server for the demo site.
