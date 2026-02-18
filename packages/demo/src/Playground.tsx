@@ -13,7 +13,7 @@ import {
   MdxCardSet,
   MdxPopover,
   MdxTabs,
-} from '../../';
+} from 'components-for-mdx';
 import { useTheme } from './theme';
 
 const snippets: Record<string, string> = {
