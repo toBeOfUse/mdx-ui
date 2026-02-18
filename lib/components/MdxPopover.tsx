@@ -3,7 +3,13 @@ import { Button } from '@/components/ui/button';
 import { Children, type ReactNode } from 'react';
 import { scanForTag } from '../utils';
 
-export function MdxPopover({ children }: { children: ReactNode }) {
+export function MdxPopover({
+  children,
+  defaultOpen,
+}: {
+  children: ReactNode;
+  defaultOpen: boolean;
+}) {
   const childArray = Children.toArray(children);
   const header = childArray.find(scanForTag('h5'));
   if (!header) {
@@ -15,7 +21,7 @@ export function MdxPopover({ children }: { children: ReactNode }) {
 
   return (
     <div className="py-6 flex justify-center">
-      <Popover defaultOpen>
+      <Popover defaultOpen={defaultOpen}>
         <PopoverTrigger asChild>
           <Button
             className="cursor-pointer outline-none border-solid border-border bg-transparent hover:bg-muted"

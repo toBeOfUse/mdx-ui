@@ -94,7 +94,7 @@ Add some content in the editor to see what it looks like when rendered.
         </div>
         <div className="examples-grid">
           <div>
-            <MdxExample component="MdxAccordion" mdx={accordionMdx} />
+            <MdxExample component="MdxAccordion" mdx={accordionMdx} attrs="defaultOpen" />
           </div>
           <div>
             <MdxExample component="MdxInfo" mdx={alertMdx} />

@@ -13,7 +13,13 @@ import { scanForTag } from '../utils';
  * before the first hr (`---` in markdown) becomes the external label of the
  * accordion. The rest of the children become the content within.
  */
-export function MdxAccordion({ children }: { children: ReactNode }) {
+export function MdxAccordion({
+  children,
+  defaultOpen,
+}: {
+  children: ReactNode;
+  defaultOpen: boolean;
+}) {
   const childArray = Children.toArray(children);
   let hrLocation = childArray.findIndex(scanForTag('hr'));
   let hrFound = hrLocation !== -1;
@@ -27,7 +33,7 @@ export function MdxAccordion({ children }: { children: ReactNode }) {
     <Accordion
       type="single"
       collapsible
-      defaultValue="item-1"
+      defaultValue={defaultOpen ? 'item-1' : undefined}
       className="w-full border border-border px-4 rounded-lg my-4"
     >
       <AccordionItem value="item-1">
