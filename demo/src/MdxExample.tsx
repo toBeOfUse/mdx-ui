@@ -2,9 +2,17 @@ import { useEffect, useState, useCallback, Component, type ReactNode } from 'rea
 import styles from './MdxExample.module.css';
 import { evaluate } from '@mdx-js/mdx';
 import * as runtime from 'react/jsx-runtime';
-import { MdxAccordion, MdxInfo, MdxWarning, MdxCarousel, MdxPopover, MdxTabs } from '../../';
+import {
+  MdxAccordion,
+  MdxInfo,
+  MdxWarning,
+  MdxCard,
+  MdxCardSet,
+  MdxPopover,
+  MdxTabs,
+} from '../../';
 
-const components = { MdxAccordion, MdxInfo, MdxWarning, MdxCarousel, MdxPopover, MdxTabs };
+const components = { MdxAccordion, MdxInfo, MdxWarning, MdxCard, MdxCardSet, MdxPopover, MdxTabs };
 
 class ErrorBoundary extends Component<
   { resetKey: string; children: ReactNode },

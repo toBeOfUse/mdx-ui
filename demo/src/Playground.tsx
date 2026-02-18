@@ -5,7 +5,15 @@ import styles from './Playground.module.css';
 import { evaluate } from '@mdx-js/mdx';
 import * as runtime from 'react/jsx-runtime';
 import Editor from '@monaco-editor/react';
-import { MdxAccordion, MdxInfo, MdxWarning, MdxCarousel, MdxPopover, MdxTabs } from '../../';
+import {
+  MdxAccordion,
+  MdxInfo,
+  MdxWarning,
+  MdxCard,
+  MdxCardSet,
+  MdxPopover,
+  MdxTabs,
+} from '../../';
 import { useTheme } from './theme';
 
 const snippets: Record<string, string> = {
@@ -41,15 +49,28 @@ Content for the first tab.
 Content for the second tab.
 
 </MdxTabs>`,
-  Carousel: `<MdxCarousel>
+  Card: `<MdxCard>
 
-### Slide One
-Welcome to the carousel.
+Card Heading
 
-### Slide Two
-Navigate with the arrow buttons.
+This is the card content.
 
-</MdxCarousel>`,
+</MdxCard>`,
+  CardSet: `<MdxCardSet>
+
+# Card One
+
+Content for the first card.
+
+# Card Two
+
+Content for the second card.
+
+# Card Three
+
+Content for the third card.
+
+</MdxCardSet>`,
   Popover: `<MdxPopover>
 
 Click me
@@ -59,9 +80,9 @@ This content appears inside a popover.
 </MdxPopover>`,
 };
 
-const components = { MdxAccordion, MdxInfo, MdxWarning, MdxCarousel, MdxPopover, MdxTabs };
+const components = { MdxAccordion, MdxInfo, MdxWarning, MdxCard, MdxCardSet, MdxPopover, MdxTabs };
 
-const importLine = `import { MdxAccordion, MdxInfo, MdxWarning, MdxCarousel, MdxPopover, MdxTabs } from 'components-for-mdx';`;
+const importLine = `import { MdxAccordion, MdxInfo, MdxWarning, MdxCard, MdxCardSet, MdxPopover, MdxTabs } from 'components-for-mdx';`;
 
 class ErrorBoundary extends Component<
   { resetKey: string; children: ReactNode },
