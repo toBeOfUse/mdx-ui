@@ -2,7 +2,7 @@ import { useEffect, useState, useCallback, Component, type ReactNode } from 'rea
 import { evaluate } from '@mdx-js/mdx';
 import * as runtime from 'react/jsx-runtime';
 import Editor from '@monaco-editor/react';
-import { MdxAccordion, MdxAlert, MdxCarousel, MdxPopover, MdxTabs } from '../../';
+import { MdxAccordion, MdxInfo, MdxWarning, MdxCarousel, MdxPopover, MdxTabs } from '../../';
 import { useTheme } from './theme';
 
 const defaultValue = `<MdxAccordion>
@@ -45,9 +45,9 @@ Use the arrow buttons to navigate between slides.
 
 </MdxCarousel>`;
 
-const components = { MdxAccordion, MdxAlert, MdxCarousel, MdxPopover, MdxTabs };
+const components = { MdxAccordion, MdxInfo, MdxWarning, MdxCarousel, MdxPopover, MdxTabs };
 
-const importLine = `import { MdxAccordion, MdxAlert, MdxCarousel, MdxPopover, MdxTabs } from 'components-for-mdx';`;
+const importLine = `import { MdxAccordion, MdxInfo, MdxWarning, MdxCarousel, MdxPopover, MdxTabs } from 'components-for-mdx';`;
 
 class ErrorBoundary extends Component<
   { resetKey: string; children: ReactNode },

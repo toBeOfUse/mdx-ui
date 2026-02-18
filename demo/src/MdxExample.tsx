@@ -1,10 +1,10 @@
 import { useEffect, useState, useCallback, Component, type ReactNode } from 'react';
 import { evaluate } from '@mdx-js/mdx';
 import * as runtime from 'react/jsx-runtime';
-import { MdxAccordion, MdxAlert, MdxCarousel, MdxPopover, MdxTabs } from '../../';
+import { MdxAccordion, MdxInfo, MdxWarning, MdxCarousel, MdxPopover, MdxTabs } from '../../';
 
 const mono = 'ui-monospace, SFMono-Regular, "SF Mono", Menlo, Consolas, monospace';
-const components = { MdxAccordion, MdxAlert, MdxCarousel, MdxPopover, MdxTabs };
+const components = { MdxAccordion, MdxInfo, MdxWarning, MdxCarousel, MdxPopover, MdxTabs };
 
 class ErrorBoundary extends Component<
   { resetKey: string; children: ReactNode },

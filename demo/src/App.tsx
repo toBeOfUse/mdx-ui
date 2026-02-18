@@ -30,13 +30,20 @@ const snippets: Record<string, string> = {
 Here is some hidden content revealed by the accordion.
 
 </MdxAccordion>`,
-  Alert: `<MdxAlert variant="info">
+  Info: `<MdxInfo>
 
 ###### Heads up!
 
 This is an informational alert rendered from Markdown.
 
-</MdxAlert>`,
+</MdxInfo>`,
+  Warning: `<MdxWarning>
+
+###### Watch out!
+
+This is a warning alert rendered from Markdown.
+
+</MdxWarning>`,
   Tabs: `<MdxTabs>
 
 #### Tab A
@@ -65,13 +72,13 @@ This content appears inside a popover.
 };
 
 function App() {
-  const [mdx, setMdx] = useState(`<MdxAlert variant="info">
+  const [mdx, setMdx] = useState(`<MdxInfo>
 
 ###### Hi!
 
 Add some content in the editor to see what it looks like when rendered.
 
-</MdxAlert>`);
+</MdxInfo>`);
 
   const appendSnippet = (name: string) => {
     setMdx((prev) => (prev ? prev + '\n\n' : '') + snippets[name]);
@@ -90,7 +97,7 @@ Add some content in the editor to see what it looks like when rendered.
             <MdxExample component="MdxAccordion" mdx={accordionMdx} />
           </div>
           <div>
-            <MdxExample component="MdxAlert" attrs='variant="info"' mdx={alertMdx} />
+            <MdxExample component="MdxInfo" mdx={alertMdx} />
           </div>
           <div>
             <MdxExample component="MdxTabs" mdx={tabsMdx} />
