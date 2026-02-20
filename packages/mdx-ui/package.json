@@ -1,8 +1,13 @@
 {
   "name": "@tobeofuse/mdx-ui",
   "private": false,
-  "version": "0.5.2",
+  "version": "0.5.3",
   "type": "module",
+  "keywords": [
+    "mdx",
+    "react",
+    "shadcn"
+  ],
   "scripts": {
     "build": "tsc -b ./tsconfig.lib.json && vite build"
   },
