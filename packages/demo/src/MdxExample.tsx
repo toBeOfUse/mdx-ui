@@ -76,8 +76,7 @@ export function MdxExample({
 
   return (
     <div className={styles.mdxExample}>
-      {/* Source */}
-      <pre className={styles.source}>{mdx.trim()}</pre>
+      <pre className={styles.source}>{`<${component}>\n\n${mdx.trim()}\n\n</${component}>`}</pre>
 
       {/* Arrow */}
       <svg

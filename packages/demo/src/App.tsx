@@ -15,11 +15,9 @@ This component renders a styled
 alert from plain Markdown.`;
 
 const tabsMdx = `# Tab A
-
 This tab has content.
 
 # Tab B
-
 This tab has different content.`;
 
 const sandboxInitialValue = `<MdxTabs>
@@ -58,7 +56,13 @@ function App() {
       <div className={styles.aboveTheFold}>
         <div className={styles.appHeader}>
           <h1>MDX UI</h1>
-          <p>Drop-in components that turn simple Markdown into interactive UI.</p>
+          <p>
+            Drop-in components built on{' '}
+            <a target="_blank" href="https://mdxjs.com/">
+              MDX
+            </a>{' '}
+            that turn simple Markdown into interactive UI.
+          </p>
         </div>
         <div className={styles.examplesGrid}>
           <div>
@@ -75,9 +79,7 @@ function App() {
 
       <div className={styles.sandboxSection}>
         <h2>Sandbox</h2>
-        <p>
-          Try it out - click the buttons to add example components, and edit them however you want.
-        </p>
+        <p>Add example components by clicking the buttons, then mess with them.</p>
         <Playground initialValue={sandboxInitialValue} />
       </div>
 
@@ -85,16 +87,16 @@ function App() {
         ref={stepsRef}
         className={`${styles.stepsSection} ${stepsInView ? styles.inView : ''}`}
       >
-        <h2 className={styles.stepsHeading}>And now, the details</h2>
+        <h2 className={styles.stepsHeading}>The Explanation</h2>
         <ol className={styles.stepsList}>
           <li className={styles.stepItem}>
             <div className={styles.stepNumber}>1</div>
             <div className={styles.stepContent}>
               <h3>Why?</h3>
               <p>
-                The fact that MDX lets you drop React components into something you’re writing is
-                really cool, but writing or generating the JSX can be a chore. This library cuts out
-                the boilerplate.
+                <a href="https://mdxjs.com/">MDX</a> is a really cool way to drop React components
+                into something you're writing, but switching between normal words and JSX can be a
+                chore. This library cuts out the boilerplate.
               </p>
             </div>
           </li>
@@ -113,7 +115,12 @@ function App() {
             <div className={styles.stepNumber}>3</div>
             <div className={styles.stepContent}>
               <h3>Let's Go</h3>
-              <p>In your terminal:</p>
+              <p>
+                <a href="https://mdxjs.com/docs/getting-started/">
+                  Set up a project that uses MDX.
+                </a>{' '}
+                Then, in your terminal:
+              </p>
               <pre className={styles.stepCode}>npm i @tobeofuse/mdx-ui</pre>
               <p>In an MDX file:</p>
               <pre

@@ -10,9 +10,9 @@
 
 .source {
   margin: 0;
-  padding: 0.875rem 1rem;
+  padding: 0.75rem;
   font-size: 0.8125rem;
-  line-height: 1.55;
+  line-height: 1.2;
   font-family: ui-monospace, SFMono-Regular, "SF Mono", Menlo, Consolas, monospace;
   color: var(--foreground);
   white-space: pre;
