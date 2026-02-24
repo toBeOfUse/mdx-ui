@@ -8,7 +8,7 @@
     "css": "lib/index.css",
     "baseColor": "neutral",
     "cssVariables": true,
-    "prefix": ""
+    "prefix": "mdxui"
   },
   "iconLibrary": "lucide",
   "rtl": false,

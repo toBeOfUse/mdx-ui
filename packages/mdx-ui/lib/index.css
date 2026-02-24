@@ -1,8 +1,8 @@
-@layer theme, base, components, utilities;
-@import "tailwindcss/theme.css" layer(theme);
+@layer mdxuitheme, mdxuibase, mdxuiutilities;
+@import "tailwindcss/theme.css" layer(mdxuitheme) prefix(mdxui);
 /* note: not importing preflight so as not to conflict with whatever styles the
 user is already using to format their mdx files */
-@import "tailwindcss/utilities.css" layer(utilities);
+@import "tailwindcss/utilities.css" layer(mdxuiutilities) prefix(mdxui);
 
 @plugin "@tailwindcss/typography";
 @import 'tw-animate-css';
@@ -120,12 +120,12 @@ user is already using to format their mdx files */
   --sidebar-ring: oklch(0.556 0 0);
 }
 
-@layer base {
+@layer mdxuibase {
   * {
-    @apply border-border outline-ring/50;
+    @apply mdxui:border-border mdxui:outline-ring/50;
   }
 
   body {
-    @apply bg-background text-foreground;
+    @apply mdxui:bg-background mdxui:text-foreground;
   }
 }
