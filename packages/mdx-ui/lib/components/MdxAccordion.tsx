@@ -5,7 +5,7 @@ import {
   AccordionTrigger,
 } from '@/components/ui/accordion';
 import { Children, type ReactNode } from 'react';
-import { scanForTag } from '../utils';
+import { cn, scanForTag } from '../utils';
 
 /**
  * This component takes some HTML elements, like the ones that the Markdown in
@@ -46,7 +46,12 @@ export function MdxAccordion({
       className="mdxui:w-full mdxui:border mdxui:border-border mdxui:px-4 mdxui:rounded-lg mdxui:my-4"
     >
       <AccordionItem value="item-1">
-        <AccordionTrigger className="mdxui:text-sm mdxui:p-0 mdxui:bg-transparent mdxui:border-none mdxui:outline-none mdxui:*:m-0 mdxui:*:inline">
+        <AccordionTrigger
+          className={cn(
+            'mdxui:text-sm mdxui:p-0 mdxui:bg-transparent mdxui:border-none mdxui:outline-none',
+            'mdxui:*:m-0 mdxui:*:inline mdxui:[&>svg]:my-auto',
+          )}
+        >
           {header}
         </AccordionTrigger>
         <AccordionContent className="mdxui:prose mdxui:dark:prose-invert">
