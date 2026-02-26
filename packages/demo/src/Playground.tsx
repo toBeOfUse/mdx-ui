@@ -82,7 +82,7 @@ This content appears inside a popover.
 
 const components = { MdxAccordion, MdxInfo, MdxWarning, MdxCard, MdxCardSet, MdxPopover, MdxTabs };
 
-const importLine = `import { MdxAccordion, MdxInfo, MdxWarning, MdxCard, MdxCardSet, MdxPopover, MdxTabs } from 'mdx-ui';`;
+const importLine = `import { MdxAccordion, MdxInfo, MdxWarning, MdxCard, MdxCardSet, MdxPopover, MdxTabs } from '@tobeofuse/mdx-ui';`;
 
 class ErrorBoundary extends Component<
   { resetKey: string; children: ReactNode },
@@ -117,6 +117,7 @@ export function Playground({ initialValue = '' }: { initialValue?: string }) {
   const [value, setValue] = useState(initialValue);
   const [result, setResult] = useState<ReactNode>(null);
   const [error, setError] = useState<string | null>(null);
+  const [importCopied, setImportCopied] = useState(false);
   const editorRef = useRef<Monaco.editor.IStandaloneCodeEditor | null>(null);
   const previewRef = useRef<HTMLDivElement>(null);
   const scrollPreviewRef = useRef(false);
@@ -162,6 +163,16 @@ export function Playground({ initialValue = '' }: { initialValue?: string }) {
     compileAndRun(value);
   }, [value]);
 
+  const copyImportLine = useCallback(async () => {
+    try {
+      await navigator.clipboard.writeText(importLine);
+      setImportCopied(true);
+      window.setTimeout(() => setImportCopied(false), 1200);
+    } catch {
+      console.error('could not copy');
+    }
+  }, []);
+
   return (
     <div className={styles.playgroundWrapper}>
       <div className={appStyles.snippetButtons}>
@@ -173,9 +184,20 @@ export function Playground({ initialValue = '' }: { initialValue?: string }) {
       </div>
       <div className={styles.playground}>
         <div className={styles.editorPane}>
-          <pre className={styles.importLine} style={{ background: isDark ? '#1e1e1e' : '#ffffff' }}>
-            {importLine}
-          </pre>
+          <div
+            className={styles.importLineRow}
+            style={{ background: isDark ? '#1e1e1e' : '#ffffff' }}
+          >
+            <pre className={styles.importLine}>{importLine}</pre>
+            <button
+              type="button"
+              className={styles.copyButton}
+              onClick={copyImportLine}
+              aria-label="Copy import line"
+            >
+              {importCopied ? 'Copied' : 'Copy'}
+            </button>
+          </div>
           <Editor
             height="100%"
             value={value}
