@@ -1,0 +1,42 @@
+name: Publish to npm
+
+on:
+  push:
+    tags:
+      - 'v*'
+
+permissions:
+  contents: write
+  id-token: write
+
+jobs:
+  publish:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: npm
+          registry-url: https://registry.npmjs.org
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Create GitHub release
+        run: gh release create ${{ github.ref_name }} --generate-notes --title ${{ github.ref_name }}
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Build library
+        run: npm run build
+
+      - name: Copy Readme
+        run: npx cpy Readme.md packages/mdx-ui/
+
+      - name: Publish to npm
+        run: npm publish --provenance --access public --workspace=packages/mdx-ui
