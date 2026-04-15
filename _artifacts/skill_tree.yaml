@@ -1,0 +1,36 @@
+# skills/_artifacts/skill_tree.yaml
+library:
+  name: '@tobeofuse/mdx-ui'
+  version: '0.6.2'
+  repository: 'https://github.com/toBeOfUse/mdx-ui'
+  description: 'React components that wrap Shadcn UI primitives to add interactive UI to MDX documentation files using only Markdown syntax.'
+generated_from:
+  domain_map: '_artifacts/domain_map.yaml'
+  skill_spec: '_artifacts/skill_spec.md'
+generated_at: '2026-04-15'
+
+skills:
+  - name: 'Using MDX UI'
+    slug: 'using-mdx-ui'
+    type: 'core'
+    domain: 'using-mdx-ui'
+    path: 'skills/using-mdx-ui/SKILL.md'
+    package: 'packages/mdx-ui'
+    description: >
+      Add interactive UI components to MDX documentation files using only
+      Markdown syntax. Covers MdxTabs, MdxAccordion, MdxInfo, MdxWarning,
+      MdxCard, MdxCardSet, MdxPopover, child slot pattern, blank line
+      requirements, hr/h1 divider syntax, defaultOpen prop, CSS dark mode
+      setup, and Astro experimentalReactChildren integration.
+    requires: []
+    sources:
+      - 'toBeOfUse/mdx-ui:Readme.md'
+      - 'toBeOfUse/mdx-ui:packages/mdx-ui/lib/main.ts'
+      - 'toBeOfUse/mdx-ui:packages/mdx-ui/lib/components/MdxTabs.tsx'
+      - 'toBeOfUse/mdx-ui:packages/mdx-ui/lib/components/MdxAccordion.tsx'
+      - 'toBeOfUse/mdx-ui:packages/mdx-ui/lib/components/MdxAlert.tsx'
+      - 'toBeOfUse/mdx-ui:packages/mdx-ui/lib/components/MdxCard.tsx'
+      - 'toBeOfUse/mdx-ui:packages/mdx-ui/lib/components/MdxPopover.tsx'
+      - 'toBeOfUse/mdx-ui:packages/mdx-ui/lib/utils.ts'
+    subsystems: []
+    references: []

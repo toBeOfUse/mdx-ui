@@ -10,7 +10,8 @@
   "keywords": [
     "mdx",
     "react",
-    "shadcn"
+    "shadcn",
+    "tanstack-intent"
   ],
   "scripts": {
     "build": "tsc -b ./tsconfig.lib.json && vite build"
@@ -18,7 +19,8 @@
   "main": "dist/main.js",
   "types": "dist/main.d.ts",
   "files": [
-    "dist"
+    "dist",
+    "skills"
   ],
   "sideEffects": [
     "**/*.css"
@@ -39,6 +41,7 @@
     "@eslint/js": "^9.39.1",
     "@tailwindcss/typography": "^0.5.19",
     "@tailwindcss/vite": "^4.1.18",
+    "@tanstack/intent": "^0.0.29",
     "@types/node": "^24.10.1",
     "@types/react": "^19.2.7",
     "@types/react-dom": "^19.2.3",
